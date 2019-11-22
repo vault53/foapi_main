@@ -1,0 +1,20 @@
+version: '3.7'
+
+networks:
+  backend-tier:
+  data-tier:
+  frontend-tier
+
+services:
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    networks:
+      - data-tier
+  kafka:
+    image: 'bitnami/kafka:latest'
+    networks:
+      - data-tier
+  foapi_rest:
+    image: 'vault53/foapi_rest:latest'
+    networks:
+      - backend-tier
