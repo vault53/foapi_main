@@ -3,7 +3,7 @@ version: '3.7'
 networks:
   backend-tier:
   data-tier:
-  frontend-tier
+  frontend-tier:
 
 services:
   zookeeper:
