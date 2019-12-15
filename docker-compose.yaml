@@ -22,7 +22,7 @@ services:
     depends_on:
     - "zookeeper"
   foapi_rest:
-    image: 'vault53/foapi_rest:latest'
+    image: 'vault53/foapi_rest:${REST_VERSION}'
     networks:
       - backend-tier
       - data-tier
