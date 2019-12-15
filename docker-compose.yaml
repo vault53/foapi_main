@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.2'
 
 networks:
   backend-tier:
@@ -10,11 +10,23 @@ services:
     image: 'bitnami/zookeeper:latest'
     networks:
       - data-tier
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
     image: 'bitnami/kafka:latest'
     networks:
       - data-tier
+    environment:
+    - ALLOW_PLAINTEXT_LISTENER=YES
+    - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+    depends_on:
+    - "zookeeper"
   foapi_rest:
     image: 'vault53/foapi_rest:latest'
     networks:
       - backend-tier
+      - data-tier
+    depends_on:
+    - "kafka"
+    ports:
+    - "5000:5000"

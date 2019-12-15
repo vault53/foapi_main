@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "rest": "git@github.com:vault53/foapi_rest.git",
+    "data-service": "git@github.com:vault53/foapi_data-service.git"
+  }
+}
